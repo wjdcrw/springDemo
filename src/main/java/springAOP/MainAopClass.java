@@ -13,6 +13,7 @@ public class MainAopClass {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MainConfig.class);
         Calculate calculate=ctx.getBean(Calculate.class);
-        System.out.println(calculate.add(2,3));
+        int result = calculate.add(2,3);
+        System.out.println(result);
     }
 }
