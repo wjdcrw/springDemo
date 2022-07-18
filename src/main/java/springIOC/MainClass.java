@@ -24,8 +24,13 @@ public class MainClass {
 
        // 容器关闭也发布事件
      //   ctx.close();
-        System.out.println(ctx.getBean(TulingService.class));
-
+//        TulingService bean = ctx.getBean(TulingService.class);
+        TulingService bean = (TulingService) ctx.getBean("tulingService");
+//        TulingDao bean1 = ctx.getBean(TulingDao.class);
+//        TulingDao bean2 = ctx.getBean(TulingDao.class);
+        bean.display();
+        System.out.println(bean);
+        ctx.close();
 
     }
 }
