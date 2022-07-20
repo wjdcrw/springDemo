@@ -1,5 +1,6 @@
 package springIOC;
 
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,10 +19,15 @@ import org.springframework.stereotype.Service;
 @Configuration
 @ComponentScan(basePackages = "springIOC")
 //@Controller
-//@Service
+@Service
 public class MainConfig {
-    @Bean
+//    @Bean
     public TulingDao tulingDao(){
         return new TulingDao();
+    }
+
+//    @Bean(autowire = Autowire.BY_NAME)
+    public TulingService tulingService(){
+        return new TulingService();
     }
 }

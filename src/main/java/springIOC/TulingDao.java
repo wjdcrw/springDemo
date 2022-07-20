@@ -1,5 +1,7 @@
 package springIOC;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @ClassName TulingDao
  * @Description TODO
@@ -7,5 +9,9 @@ package springIOC;
  * @Date 2019/9/20 13:52
  * @Version 1.0
  **/
+//@Component
 public class TulingDao {
+    public void a(){
+        System.out.println("aaa");
+    }
 }

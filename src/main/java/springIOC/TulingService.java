@@ -1,6 +1,11 @@
 package springIOC;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @ClassName TulingService
@@ -11,4 +16,19 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class TulingService {
+//    @Autowired
+//    @Lazy
+    private TulingDao tulingDao;
+
+    public TulingDao getTulingDao() {
+        return tulingDao;
+    }
+    @Autowired
+    public void setTulingDao(@Lazy TulingDao tulingDao) {
+        this.tulingDao = tulingDao;
+    }
+
+    public void display(){
+        tulingDao.a();
+    }
 }
