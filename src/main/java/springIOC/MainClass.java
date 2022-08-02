@@ -1,6 +1,7 @@
 package springIOC;
 
 import factoryBean.Car;
+import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.context.ApplicationEvent;
@@ -49,7 +50,11 @@ public class MainClass {
         AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();
         beanDefinition.setBeanClass(ConstructA.class);
 //        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1,new OrderService());
+//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1,new RuntimeBeanReference("orderService"));
+        // 设置为严格模式
+//        beanDefinition.setLenientConstructorResolution(false);
         beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_CONSTRUCTOR);
+
         context.registerBeanDefinition("constructA",beanDefinition);
 //        UserService userService = (UserService)context.getBean("userService",new OrderService(),new OrderService());
 //        userService.test();
