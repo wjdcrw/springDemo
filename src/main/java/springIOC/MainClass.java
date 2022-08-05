@@ -7,6 +7,8 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import springIOC.construct.ConstructA;
+import springIOC.construct.ConstructB;
+import springIOC.construct.ConstructC;
 import springIOC.generic.OrderService;
 import springIOC.generic.UserService;
 
@@ -49,11 +51,11 @@ public class MainClass {
         //ClassPathXmlApplicationContext context new ClassPathXmlApplicationContext("spring.xml");
         AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();
         beanDefinition.setBeanClass(ConstructA.class);
-//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1,new OrderService());
-//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1,new RuntimeBeanReference("orderService"));
+        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(2,new ConstructB());
+//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(0,new RuntimeBeanReference("constructB"));
         // 设置为严格模式
 //        beanDefinition.setLenientConstructorResolution(false);
-        beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_CONSTRUCTOR);
+//        beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_CONSTRUCTOR);
 
         context.registerBeanDefinition("constructA",beanDefinition);
 //        UserService userService = (UserService)context.getBean("userService",new OrderService(),new OrderService());
