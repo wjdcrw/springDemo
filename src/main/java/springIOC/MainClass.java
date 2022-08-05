@@ -51,8 +51,9 @@ public class MainClass {
         //ClassPathXmlApplicationContext context new ClassPathXmlApplicationContext("spring.xml");
         AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();
         beanDefinition.setBeanClass(ConstructA.class);
-        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(2,new ConstructB());
-//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(0,new RuntimeBeanReference("constructB"));
+        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(0,new ConstructC());
+//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1,new RuntimeBeanReference("constructC"));
+//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(2,new RuntimeBeanReference("constructB"));
         // 设置为严格模式
 //        beanDefinition.setLenientConstructorResolution(false);
 //        beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_CONSTRUCTOR);

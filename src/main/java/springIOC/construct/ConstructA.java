@@ -8,9 +8,9 @@ public class ConstructA {
     private ConstructB constructB;
     private ConstructC constructC;
 
-    public ConstructA(){
+    /*public ConstructA(){
         System.out.println(0);
-    }
+    }*/
 //    @Autowired
     public ConstructA(ConstructB constructB){
         this.constructB = constructB;
@@ -33,6 +33,7 @@ public class ConstructA {
         System.out.println(3);
     }
 
+//    @Autowired(required = false)
     public ConstructA(ConstructC constructC,ConstructB constructB){
         this.constructB = constructB;
         this.constructC = constructC;
