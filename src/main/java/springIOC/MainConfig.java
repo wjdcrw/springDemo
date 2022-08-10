@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,5 +28,13 @@ public class MainConfig {
 //    @Bean(autowire = Autowire.BY_NAME)
     public TulingService tulingService(){
         return new TulingService();
+    }
+    @Bean(autowire = Autowire.BY_TYPE)
+    public TulingBeanNameAware tulingBeanNameAware(){
+        return new TulingBeanNameAware();
+    }
+//    @Bean(autowire = Autowire.BY_TYPE)
+    public TulingBeanFactoryAware tulingBeanFactoryAware(){
+        return new TulingBeanFactoryAware();
     }
 }

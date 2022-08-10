@@ -61,7 +61,7 @@ public class MainClass {
         context.registerBeanDefinition("constructA",beanDefinition);
 //        UserService userService = (UserService)context.getBean("userService",new OrderService(),new OrderService());
 //        userService.test();
-
+        TulingBeanFactoryAware factoryAware = (TulingBeanFactoryAware) context.getBeanFactory().getSingleton("tulingBeanFactoryAware");
         ConstructA constructA = (ConstructA) context.getBean("constructA");
         System.out.println(constructA);
     }
