@@ -24,7 +24,7 @@ public class TulingService {
         return tulingDao;
     }
     @Autowired
-    public void setTulingDao(@Lazy TulingDao tulingDao) {
+    public void setTulingDao(TulingDao tulingDao) {
         this.tulingDao = tulingDao;
     }
 

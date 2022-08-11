@@ -4,6 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
 public class TulingBeanFactoryAware  implements BeanFactoryAware{
     private BeanFactory beanFactory;
     private TulingBeanNameAware tulingBeanNameAware;
+    private ApplicationEventPublisher publisher;
     @Override
     public void setBeanFactory(BeanFactory beanFactory){
         this.beanFactory = beanFactory;
@@ -25,5 +27,9 @@ public class TulingBeanFactoryAware  implements BeanFactoryAware{
     public void setTulingBeanNameAware(TulingBeanNameAware tulingBeanNameAware) {
         System.out.println("TulingBeanFactoryAware");
         this.tulingBeanNameAware = tulingBeanNameAware;
+    }
+    @Autowired
+    public void setPublisher(ApplicationEventPublisher publisher) {
+        this.publisher = publisher;
     }
 }

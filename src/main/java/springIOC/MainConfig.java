@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 //@Controller
 @Service
 public class MainConfig {
-//    @Bean
+    @Bean
     public TulingDao tulingDao(){
         return new TulingDao();
     }
