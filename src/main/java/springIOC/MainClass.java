@@ -7,8 +7,6 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import springIOC.construct.ConstructA;
-import springIOC.construct.ConstructB;
-import springIOC.construct.ConstructC;
 import springIOC.generic.OrderService;
 import springIOC.generic.UserService;
 
@@ -21,8 +19,8 @@ import springIOC.generic.UserService;
  **/
 public class MainClass {
     public static void main(String[] args) {
-        test1();
-//        test2();
+//        test1();
+        test2();
     }
 
     public static void test1(){
@@ -51,17 +49,16 @@ public class MainClass {
         //ClassPathXmlApplicationContext context new ClassPathXmlApplicationContext("spring.xml");
         AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition().getBeanDefinition();
         beanDefinition.setBeanClass(ConstructA.class);
-        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(0,new ConstructC());
-//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1,new RuntimeBeanReference("constructC"));
-//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(2,new RuntimeBeanReference("constructB"));
+//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1,new OrderService());
+//        beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(1,new RuntimeBeanReference("orderService"));
         // 设置为严格模式
 //        beanDefinition.setLenientConstructorResolution(false);
-//        beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_CONSTRUCTOR);
+        beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_CONSTRUCTOR);
 
         context.registerBeanDefinition("constructA",beanDefinition);
 //        UserService userService = (UserService)context.getBean("userService",new OrderService(),new OrderService());
 //        userService.test();
-        TulingBeanFactoryAware factoryAware = (TulingBeanFactoryAware) context.getBeanFactory().getSingleton("tulingBeanFactoryAware");
+
         ConstructA constructA = (ConstructA) context.getBean("constructA");
         System.out.println(constructA);
     }

@@ -3,16 +3,11 @@ package springIOC.construct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.beans.ConstructorProperties;
-
 //@Component
 public class ConstructA {
     private ConstructB constructB;
     private ConstructC constructC;
 
-    /*public ConstructA(){
-        System.out.println(0);
-    }*/
 //    @Autowired
     public ConstructA(ConstructB constructB){
         this.constructB = constructB;
@@ -22,7 +17,6 @@ public class ConstructA {
 
 
 //    @Autowired(required = false)
-//    @ConstructorProperties(value = )
     public ConstructA(ConstructB constructB,ConstructC constructC){
         this.constructB = constructB;
         this.constructC = constructC;
@@ -30,16 +24,9 @@ public class ConstructA {
     }
 
 //    @Autowired(required = false)
-    public ConstructA(ConstructB constructB1,ConstructC constructC,ConstructB constructB){
+    public ConstructA(ConstructB constructB,ConstructC constructC,ConstructB constructB2){
         this.constructB = constructB;
         this.constructC = constructC;
         System.out.println(3);
-    }
-
-//    @Autowired(required = false)
-    public ConstructA(ConstructC constructC,ConstructB constructB){
-        this.constructB = constructB;
-        this.constructC = constructC;
-        System.out.println(4);
     }
 }
