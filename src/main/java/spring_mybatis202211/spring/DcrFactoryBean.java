@@ -3,6 +3,7 @@ package spring_mybatis202211.spring;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spring_mybatis202211.mapper.UserMapper;
 
@@ -27,7 +28,9 @@ public class DcrFactoryBean implements FactoryBean {
         this.mapperInterface = mapperInterface;
     }
 
+    @Autowired
     public void setSqlSession(SqlSessionFactory sqlSessionFactory) {
+        sqlSessionFactory.getConfiguration().addMapper(mapperInterface);
         this.sqlSession = sqlSessionFactory.openSession();
     }
 

@@ -3,6 +3,7 @@ package spring_mybatis202211;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -20,6 +21,7 @@ import java.io.InputStream;
  */
 @ComponentScan("spring_mybatis202211")
 @DcrMapperScan("spring_mybatis202211.mapper")
+@MapperScan
 public class AppConfig {
 
     @Bean
