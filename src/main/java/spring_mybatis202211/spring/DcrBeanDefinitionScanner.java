@@ -1,13 +1,11 @@
 package spring_mybatis202211.spring;
 
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
-import org.springframework.core.type.classreading.MetadataReader;
-
-import java.io.IOException;
 import java.util.Set;
 
 /**
@@ -27,10 +25,12 @@ public class DcrBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
         Set<BeanDefinitionHolder> beanDefinitionHolders = super.doScan(basePackages);
         // 此时获取的beanDefinition的类型为接口类型（UserMapper、OrderMapper），不符合我们的要求，所以需要改一下
         for(BeanDefinitionHolder holder:beanDefinitionHolders){
-            BeanDefinition beanDefinition = holder.getBeanDefinition();
+            GenericBeanDefinition beanDefinition = (GenericBeanDefinition) holder.getBeanDefinition();
             // 指定构造器参数
             beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(beanDefinition.getBeanClassName());
             beanDefinition.setBeanClassName(DcrFactoryBean.class.getName());
+            // 指定为byType，这样set方法上就不需要使用@Autowired注解
+            beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
         }
         return beanDefinitionHolders;
     }

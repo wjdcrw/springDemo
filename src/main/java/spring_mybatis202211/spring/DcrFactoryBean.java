@@ -28,7 +28,7 @@ public class DcrFactoryBean implements FactoryBean {
         this.mapperInterface = mapperInterface;
     }
 
-    @Autowired
+//    @Autowired
     public void setSqlSession(SqlSessionFactory sqlSessionFactory) {
         sqlSessionFactory.getConfiguration().addMapper(mapperInterface);
         this.sqlSession = sqlSessionFactory.openSession();
